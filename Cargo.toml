@@ -1,0 +1,28 @@
+[package]
+name = "prime-asr"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+description = "Standalone local gRPC speech recognition server powered by tinyasr"
+repository = "https://github.com/SpherePrime/prime-asr"
+
+[dependencies]
+flate2 = "1"
+getrandom = "0.3"
+prost = "0.13"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tinyasr = { git = "https://github.com/dkaraush/tinyasr", rev = "e034289132667fa8e87dd8d474a4dc59d447b2dc" }
+tokio = { version = "1", features = ["macros", "net", "rt-multi-thread", "signal", "sync"] }
+tokio-stream = { version = "0.1", features = ["net"] }
+tonic = "0.12"
+
+[build-dependencies]
+protoc-bin-vendored = "3"
+tonic-build = "0.12"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true

@@ -1,0 +1,8 @@
+target/
+models/
+*.tzf
+*.tzf.gz
+*.onnx
+*.onnx.gz
+*.wav
+Cargo.lock
